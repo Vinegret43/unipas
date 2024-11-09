@@ -27,7 +27,6 @@ def index():
 
 @app.route("/page/<path:path>")
 def page(path):
-    print(path)
     NAMES = {
         "introduction": "Введение",
         "cs-101/memory-and-cpu": "Память и процессор",
@@ -55,4 +54,4 @@ def page(path):
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host="0.0.0.0")
