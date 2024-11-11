@@ -9,19 +9,19 @@ def index():
     return [
         {
             "name": "Введение",
-            "path": "/page/introduction",
+            "path": "page/introduction",
         },
         {
-            "section_name": "Основы информатики",
-            "path": "/page/cs-101/cs-101",
+            "name": "Основы информатики",
+            "path": "page/cs-101/cs-101",
             "inner": [
                 {
                     "name": "Память и процессор",
-                    "path": "/page/cs-101/memory-and-cpu",
+                    "path": "page/cs-101/memory-and-cpu",
                 },
                 {
                     "name": "Процессорные инструкции",
-                    "path": "/page/cs-101/cpu-instructions",
+                    "path": "page/cs-101/cpu-instructions",
                 },
             ]
         }
