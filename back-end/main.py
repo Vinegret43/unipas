@@ -16,7 +16,10 @@ def construct_index(dir_path):
         if os.path.isfile(path):
             with open(path) as f:
                 lines = [i for i in f.readlines() if i]
-                header = lines[0].removeprefix('#').strip()
+                try:
+                    header = lines[0].removeprefix('#').strip()
+                except:
+                    continue
             index.append(
                 {
                     "name": header,
@@ -24,7 +27,10 @@ def construct_index(dir_path):
                 }
             )
         elif os.path.isdir(path):
-            main_file_path = glob.glob(os.path.join(path, "0*"))[0]
+            try:
+                main_file_path = glob.glob(os.path.join(path, "0*"))[0]
+            except:
+                continue
             with open(main_file_path) as f:
                 lines = [i for i in f.readlines() if i]
                 header = lines[0].removeprefix('#').strip()
