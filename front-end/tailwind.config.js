@@ -7,6 +7,10 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
+	fontFamily: {
+		serif: ['PTSerif'],
+		delta: ['DeltaGothicOne'],
+	},
   	extend: {
   		colors: {
   			background: 'hsl(var(--background))',

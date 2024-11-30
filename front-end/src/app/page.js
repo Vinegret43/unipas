@@ -10,7 +10,7 @@ export default function Home() {
   return (
     <div>
       <h1 className="font-black text-2xl">Тут будет лендинг крч</h1>
-      <Link href="/study/introduction"><Button>Начать учиться</Button></Link>
+      <Link href="/study"><Button>Начать учиться</Button></Link>
       {list}
     </div>
   );

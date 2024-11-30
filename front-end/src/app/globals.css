@@ -7,24 +7,74 @@ body {
 }
 
 @layer base {
+  @font-face {
+    font-family: 'DeltaGothicOne';
+    font-display: swap;
+    src: url("/fonts/DelaGothicOne-Regular.ttf");
+  }
+  @font-face {
+    font-family: 'PTSerif';
+    font-style: normal;
+    font-display: swap;
+    src: url("/fonts/PTSerif-Regular.ttf");
+  }
+}
+@layer base {
+  * {
+    @apply border-border;
+    @apply font-serif;
+    @apply text-xl;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-delta;
+    @apply mt-8 mb-8;
+    @apply p-2;
+    @apply bg-accent;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  h1 {
+    @apply text-5xl font-bold;
+  }
+  h2 {
+    @apply text-3xl font-bold;
+  }
+  a {
+    @apply text-primary underline;
+  }
+  p {
+    @apply mt-6 mb-6;
+  }
+  pre {
+    @apply bg-slate-300;
+  }
+  img {
+    @apply max-w-[700px];
+    @apply w-[100%];
+    @apply m-auto;
+  }
+}
+
+@layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    --background: 0 100% 100%;
+    --foreground: 0 0% 0%;
     --card: 0 0% 100%;
     --card-foreground: 240 10% 3.9%;
     --popover: 0 0% 100%;
     --popover-foreground: 240 10% 3.9%;
-    --primary: 240 5.9% 10%;
+    --primary: 177 100% 41%;
     --primary-foreground: 0 0% 98%;
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
     --muted: 240 4.8% 95.9%;
     --muted-foreground: 240 3.8% 46.1%;
-    --accent: 240 4.8% 95.9%;
+    --accent: 47 100% 92%;
     --accent-foreground: 240 5.9% 10%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 5.9% 90%;
+    --border: 240 5.9% 70%;
     --input: 240 5.9% 90%;
     --ring: 240 10% 3.9%;
     --chart-1: 12 76% 61%;
@@ -33,7 +83,7 @@ body {
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
-    --sidebar-background: 0 0% 98%;
+    --sidebar-background: 0 0% 0%;
     --sidebar-foreground: 240 5.3% 26.1%;
     --sidebar-primary: 240 5.9% 10%;
     --sidebar-primary-foreground: 0 0% 98%;
@@ -75,26 +125,5 @@ body {
     --sidebar-accent-foreground: 240 4.8% 95.9%;
     --sidebar-border: 240 3.7% 15.9%;
     --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-  h1 {
-    @apply text-3xl font-bold;
-  }
-  h2 {
-    @apply text-2xl font-bold;
-  }
-  a {
-    @apply text-blue-900 underline;
-  }
-  pre {
-    @apply bg-slate-300;
   }
 }
