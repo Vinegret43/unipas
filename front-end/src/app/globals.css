@@ -2,10 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
 @layer base {
   @font-face {
     font-family: 'DeltaGothicOne';
@@ -47,12 +43,16 @@ body {
     @apply mt-6 mb-6;
   }
   pre {
-    @apply bg-slate-300;
+    @apply bg-muted;
   }
-  img {
-    @apply max-w-[700px];
-    @apply w-[100%];
+  .markdown img {
+    @apply max-h-[500px];
+    @apply max-w-[100%];
     @apply m-auto;
+  }
+
+  .dark .markdown img:not(.universal) {
+    @apply invert;
   }
 }
 
@@ -93,23 +93,23 @@ body {
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
   .dark {
-    --background: 240 10% 3.9%;
+    --background: 0 0% 15%;
     --foreground: 0 0% 98%;
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
+    --primary: 177 100% 41%;
     --primary-foreground: 240 5.9% 10%;
     --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 240 3.7% 15.9%;
+    --muted: 0 0% 10%;
     --muted-foreground: 240 5% 64.9%;
-    --accent: 240 3.7% 15.9%;
+    --accent: 28 100% 50%;
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
+    --border: 0 100% 100%;
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
     --chart-1: 220 70% 50%;
