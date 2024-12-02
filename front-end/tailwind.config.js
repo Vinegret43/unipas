@@ -8,8 +8,9 @@ module.exports = {
   ],
   theme: {
 	fontFamily: {
-		serif: ['PTSerif'],
-		delta: ['DeltaGothicOne'],
+		main: ['NotoSerif'],
+		title: ['Playfair'],
+		monospace: ['Iosevka'],
 	},
   	extend: {
   		colors: {

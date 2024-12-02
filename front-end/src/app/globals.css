@@ -14,37 +14,111 @@
     font-display: swap;
     src: url("/fonts/PTSerif-Regular.ttf");
   }
+  @font-face {
+    font-family: 'Albatross';
+    font-style: normal;
+    font-display: swap;
+    src: url("/fonts/Albatross.ttf");
+  }
+  @font-face {
+    font-family: 'Revard';
+    font-style: normal;
+    font-display: swap;
+    src: url("/fonts/Revard.ttf");
+  }
+  @font-face {
+    font-family: 'Lobster';
+    font-style: normal;
+    font-display: swap;
+    src: url("/fonts/Lobster-Regular.ttf");
+  }
+  @font-face {
+    font-family: 'OpenSans';
+    font-style: normal;
+    font-display: swap;
+    src: url("/fonts/OpenSans-VariableFont_wdth,wght.ttf");
+  }
+  @font-face {
+    font-family: 'OpenSans';
+    font-style: italic;
+    font-display: swap;
+    src: url("/fonts/OpenSans-Italic-VariableFont_wdth,wght.ttf");
+  }
+  @font-face {
+    font-family: 'Playfair';
+    font-style: italic;
+    font-display: swap;
+    src: url("/fonts/PlayfairDisplay-VariableFont_wght.ttf");
+  }
+  @font-face {
+    font-family: 'NotoSerif';
+    font-style: normal;
+    font-display: swap;
+    src: url("/fonts/NotoSerif-VariableFont_wdth,wght.ttf");
+  }
+  @font-face {
+    font-family: 'NotoSerif';
+    font-style: italic;
+    font-display: swap;
+    src: url("/fonts/NotoSerif-Italic-VariableFont_wdth,wght.ttf");
+  }
+  @font-face {
+    font-family: 'Iosevka';
+    font-style: normal;
+    font-display: swap;
+    src: url("/fonts/IosevkaNerdFontMono-Regular.ttf");
+  }
 }
 @layer base {
   * {
     @apply border-border;
-    @apply font-serif;
+    @apply font-main;
     @apply text-xl;
+    @apply text-foreground;
   }
+
   h1, h2, h3, h4, h5, h6 {
-    @apply font-delta;
+    @apply font-title;
+    @apply font-black;
     @apply mt-8 mb-8;
-    @apply p-2;
-    @apply bg-accent;
+    @apply p-4;
+    @apply shadow-2xl;
+    @apply border-2 border-accent rounded-2xl;
   }
+
   body {
     @apply bg-background text-foreground;
+    @apply max-w-[1600px];
+    @apply m-auto;
   }
+
   h1 {
-    @apply text-5xl font-bold;
+    @apply text-5xl;
   }
+
   h2 {
-    @apply text-3xl font-bold;
+    @apply text-3xl;
   }
+
   a {
-    @apply text-primary underline;
+    @apply text-accent underline;
   }
+
   p {
     @apply mt-6 mb-6;
   }
-  pre {
+
+  pre, code {
     @apply bg-muted;
+    @apply font-monospace;
   }
+
+  pre {
+    @apply overflow-scroll;
+    @apply p-4;
+    @apply border-2 border-primary rounded-2xl;
+  }
+
   .markdown img {
     @apply max-h-[500px];
     @apply max-w-[100%];
@@ -53,6 +127,7 @@
 
   .dark .markdown img:not(.universal) {
     @apply invert;
+    @apply hue-rotate-90;
   }
 }
 
@@ -93,23 +168,23 @@
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
   .dark {
-    --background: 0 0% 15%;
-    --foreground: 0 0% 98%;
+    --background: 322 10% 33%;
+    --accent: 174 41% 64%;
+    --primary: 35 89% 67%;
+    --secondary: 357 84% 63%;
+    --muted: 310 11% 22%;
+    --border: 310 11% 22%;
+    --foreground: 47 25% 95%;
     --card: 240 10% 3.9%;
     --card-foreground: 0 0% 98%;
     --popover: 240 10% 3.9%;
     --popover-foreground: 0 0% 98%;
-    --primary: 177 100% 41%;
     --primary-foreground: 240 5.9% 10%;
-    --secondary: 240 3.7% 15.9%;
     --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 10%;
     --muted-foreground: 240 5% 64.9%;
-    --accent: 28 100% 50%;
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 100% 100%;
     --input: 240 3.7% 15.9%;
     --ring: 240 4.9% 83.9%;
     --chart-1: 220 70% 50%;

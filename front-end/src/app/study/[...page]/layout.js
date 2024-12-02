@@ -18,22 +18,34 @@ function create_table_of_contents(contents, cur_url) {
     if (contents[i].hasOwnProperty("inner")) {
       const inner_contents = create_table_of_contents(contents[i].inner, cur_url);
       elements.push(
-        <li className={(contents[i].path == cur_url) ? 'bg-accent' : null} key={article_path}>
-          <Link href={article_path}>
+        <div className='mt-[16px]'>
+          <Link 
+            className={
+              ((contents[i].path == cur_url) ? 'text-primary' : 'text-foreground no-underline')
+               + ' font-black text-2xl hover:text-primary'
+            }
+            href={article_path}
+          >
             {contents[i].name}
           </Link>
-          <ol className="list-decimal list-inside ps-5 mt-2 bg-background">
+          <div className="ml-[16px]">
             {inner_contents}
-          </ol>
-        </li>
+          </div>
+        </div>
       );
     } else {
       elements.push(
-        <li className={(contents[i].path == cur_url) ? 'bg-accent' : null} key={contents[i].path}>
-          <Link href={article_path}>
+        <div className='leading-none mb-[12px]'>
+          <Link
+            className={
+              ((contents[i].path == cur_url) ? 'text-primary' : 'text-foreground no-underline')
+              + ' leading-none hover:text-primary'
+            }
+            href={article_path}
+          >
             {contents[i].name}
           </Link>
-        </li>
+        </div>
       );
     }
   };
@@ -47,10 +59,18 @@ export default async function Layout({children, params}) {
     const posts = await result.json();
     const table_of_contents = create_table_of_contents(posts, cur_url);
     return (
-        <ResizablePanelGroup direction="horizontal" className="max-h-[100%]" autoSaveId="study">
-          <ResizablePanel className="overflow-scroll p-4" defaultSize={20}>{table_of_contents}</ResizablePanel>
-          <ResizableHandle/>
-          <ResizablePanel><div className="overflow-scroll max-h-[100%] pl-16 pr-16">{children}</div></ResizablePanel>
-        </ResizablePanelGroup>
+    <ResizablePanelGroup direction="horizontal" className="max-h-[100%]" autoSaveId="study">
+      <ResizablePanel defaultSize={20}>
+        <div className="overflow-scroll max-h-[100%] p-4">
+          {table_of_contents}
+        </div>
+      </ResizablePanel>
+      <ResizableHandle/>
+      <ResizablePanel>
+        <div className="overflow-scroll max-h-[100%] pl-16 pr-16">
+          {children}
+        </div>
+      </ResizablePanel>
+    </ResizablePanelGroup>
     );
 }
