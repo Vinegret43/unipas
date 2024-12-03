@@ -114,7 +114,7 @@
   }
 
   pre {
-    @apply overflow-scroll;
+    @apply overflow-auto;
     @apply p-4;
     @apply border-2 border-primary rounded-2xl;
   }

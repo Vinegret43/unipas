@@ -61,13 +61,13 @@ export default async function Layout({children, params}) {
     return (
     <ResizablePanelGroup direction="horizontal" className="max-h-[100%]" autoSaveId="study">
       <ResizablePanel defaultSize={20}>
-        <div className="overflow-scroll max-h-[100%] p-4">
+        <div className="overflow-auto max-h-[100%] p-4">
           {table_of_contents}
         </div>
       </ResizablePanel>
       <ResizableHandle/>
       <ResizablePanel>
-        <div className="overflow-scroll max-h-[100%] pl-16 pr-16">
+        <div className="overflow-auto max-h-[100%] pl-16 pr-16">
           {children}
         </div>
       </ResizablePanel>
