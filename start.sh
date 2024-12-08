@@ -1,8 +1,10 @@
 #!/bin/bash
-kill "$(head -n 1 server_pids)" &> /dev/null && echo "Back-end killed"
-kill "$(tail -n 1 server_pids)" &> /dev/null && echo "Front-end killed"
+if [ -f server_pids ]; then
+    kill "$(head -n 1 server_pids)" &> /dev/null && echo "Back-end killed"
+    kill "$(tail -n 1 server_pids)" &> /dev/null && echo "Front-end killed"
+fi
 
-[[ "$1" -eq "kill" ]] && exit
+[[ "$1" == "kill" ]] && exit
 
 (
     cd back-end
