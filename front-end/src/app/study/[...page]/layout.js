@@ -1,14 +1,33 @@
-import {
-  ResizableHandle,
-  ResizablePanel,
-  ResizablePanelGroup,
-} from "@/components/ui/resizable";
 import Link from "next/link";
 import { API_ADDRESS } from "./config";
+import Nav from "@/components/custom/nav";
+import {
+  SidebarProvider,
+  SidebarTrigger,
+  SidebarMenu,
+  SidebarMenuItem,
+  SidebarMenuButton,
+  SidebarMenuSub,
+  SidebarMenuSubItem,
+  SidebarMenuSubButton,
+} from "@/components/ui/sidebar"
+import AppSidebar from "@/components/custom/app_sidebar";
+
 const path = require("node:path");
+
+function SidebarLink({href, active, children}) {
+  return (<Link
+    href={href}
+    className={'hover:text-primary ' + (active ? 'underline text-primary' : 'no-underline text-foreground')}
+  >
+    {children}
+  </Link>)
+}
 
 function create_table_of_contents(contents, cur_url) {
   let elements = [];
+  cur_url = '/study/' + cur_url;
+  console.log(cur_url);
 
   for (let i = 0; i < contents.length; i++) {
     const article_path = path.join(
@@ -16,61 +35,61 @@ function create_table_of_contents(contents, cur_url) {
       path.relative("page", contents[i].path),
     );
     if (contents[i].hasOwnProperty("inner")) {
-      const inner_contents = create_table_of_contents(contents[i].inner, cur_url);
+      let children = [];
+      for (let k = 0; k < contents[i].inner.length; k++) {
+        const inner_article_path = path.join(
+          "/study",
+          path.relative("page", contents[i].inner[k].path),
+        );
+        children.push(
+          <SidebarMenuSubItem className="sidebar-item">
+              <SidebarLink href={inner_article_path} active={inner_article_path==cur_url}>
+                {contents[i].inner[k].name}
+              </SidebarLink>
+          </SidebarMenuSubItem>
+        );
+      };
+
       elements.push(
-        <div className='mt-[16px]'>
-          <Link 
-            className={
-              ((contents[i].path == cur_url) ? 'text-primary' : 'text-foreground no-underline')
-               + ' font-black text-2xl hover:text-primary'
-            }
-            href={article_path}
-          >
-            {contents[i].name}
-          </Link>
-          <div className="ml-[16px]">
-            {inner_contents}
-          </div>
-        </div>
+        <SidebarMenuItem className="sidebar-item">
+            <SidebarLink href={article_path} active={article_path==cur_url}>
+              {contents[i].name}
+            </SidebarLink>
+          <SidebarMenuSub>
+            {children}
+          </SidebarMenuSub>
+        </SidebarMenuItem>
       );
     } else {
       elements.push(
-        <div className='leading-none mb-[12px]'>
-          <Link
-            className={
-              ((contents[i].path == cur_url) ? 'text-primary' : 'text-foreground no-underline')
-              + ' leading-none hover:text-primary'
-            }
-            href={article_path}
-          >
-            {contents[i].name}
-          </Link>
-        </div>
+        <SidebarMenuItem className="sidebar-item">
+            <SidebarLink href={article_path} active={article_path==cur_url}>
+              {contents[i].name}
+            </SidebarLink>
+        </SidebarMenuItem>
       );
     }
   };
 
-  return (<ol className="list-decimal list-inside">{elements}</ol>);
+  return (<SidebarMenu>{elements}</SidebarMenu>);
 }
 
 export default async function Layout({children, params}) {
     const result = await fetch(new URL("index", API_ADDRESS));
-    const cur_url = 'page/' + (await params).page.join("/");
+    const cur_url = (await params).page.join("/");
     const posts = await result.json();
     const table_of_contents = create_table_of_contents(posts, cur_url);
     return (
-    <ResizablePanelGroup direction="horizontal" className="max-h-[100%]" autoSaveId="study">
-      <ResizablePanel defaultSize={20}>
-        <div className="overflow-auto max-h-[100%] p-4">
+      <SidebarProvider>
+        <AppSidebar>
           {table_of_contents}
-        </div>
-      </ResizablePanel>
-      <ResizableHandle/>
-      <ResizablePanel>
-        <div className="overflow-auto max-h-[100%] pl-16 pr-16">
-          {children}
-        </div>
-      </ResizablePanel>
-    </ResizablePanelGroup>
+        </AppSidebar>
+        <main className="flex flex-col max-h-screen w-full">
+          <Nav><SidebarTrigger/></Nav>
+          <div className="overflow-auto">
+            {children}
+          </div>
+        </main>
+      </SidebarProvider>
     );
 }

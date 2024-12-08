@@ -4,47 +4,6 @@
 
 @layer base {
   @font-face {
-    font-family: 'DeltaGothicOne';
-    font-display: swap;
-    src: url("/fonts/DelaGothicOne-Regular.ttf");
-  }
-  @font-face {
-    font-family: 'PTSerif';
-    font-style: normal;
-    font-display: swap;
-    src: url("/fonts/PTSerif-Regular.ttf");
-  }
-  @font-face {
-    font-family: 'Albatross';
-    font-style: normal;
-    font-display: swap;
-    src: url("/fonts/Albatross.ttf");
-  }
-  @font-face {
-    font-family: 'Revard';
-    font-style: normal;
-    font-display: swap;
-    src: url("/fonts/Revard.ttf");
-  }
-  @font-face {
-    font-family: 'Lobster';
-    font-style: normal;
-    font-display: swap;
-    src: url("/fonts/Lobster-Regular.ttf");
-  }
-  @font-face {
-    font-family: 'OpenSans';
-    font-style: normal;
-    font-display: swap;
-    src: url("/fonts/OpenSans-VariableFont_wdth,wght.ttf");
-  }
-  @font-face {
-    font-family: 'OpenSans';
-    font-style: italic;
-    font-display: swap;
-    src: url("/fonts/OpenSans-Italic-VariableFont_wdth,wght.ttf");
-  }
-  @font-face {
     font-family: 'Playfair';
     font-style: italic;
     font-display: swap;
@@ -69,6 +28,7 @@
     src: url("/fonts/IosevkaNerdFontMono-Regular.ttf");
   }
 }
+
 @layer base {
   * {
     @apply border-border;
@@ -84,12 +44,6 @@
     @apply p-4;
     @apply shadow-2xl;
     @apply border-2 border-accent rounded-2xl;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-    @apply max-w-[1600px];
-    @apply m-auto;
   }
 
   h1 {
@@ -108,9 +62,18 @@
     @apply mt-6 mb-6;
   }
 
+  code:not(pre *) {
+    @apply p-[4px];
+  }
+
+  pre * {
+    @apply font-monospace;
+  }
+
   pre, code {
     @apply bg-muted;
     @apply font-monospace;
+    @apply rounded-md;
   }
 
   pre {
@@ -125,9 +88,32 @@
     @apply m-auto;
   }
 
+  .sidebar-menu-item * {
+    @apply leading-none;
+  }
+
   .dark .markdown img:not(.universal) {
     @apply invert;
     @apply hue-rotate-90;
+  }
+
+}
+
+@layer base {
+  .hljs-keyword {
+    @apply text-primary;
+  }
+
+  .hljs-number {
+    @apply text-accent;
+  }
+
+  .hljs-built_in {
+    @apply text-secondary;
+  }
+
+  .hljs-comment {
+    @apply text-muted-foreground;
   }
 }
 
@@ -144,7 +130,6 @@
     --secondary: 240 4.8% 95.9%;
     --secondary-foreground: 240 5.9% 10%;
     --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
     --accent: 47 100% 92%;
     --accent-foreground: 240 5.9% 10%;
     --destructive: 0 84.2% 60.2%;
@@ -158,14 +143,6 @@
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
     --radius: 0.5rem;
-    --sidebar-background: 0 0% 0%;
-    --sidebar-foreground: 240 5.3% 26.1%;
-    --sidebar-primary: 240 5.9% 10%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 240 4.8% 95.9%;
-    --sidebar-accent-foreground: 240 5.9% 10%;
-    --sidebar-border: 220 13% 91%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
   }
   .dark {
     --background: 322 10% 33%;
@@ -181,7 +158,7 @@
     --popover-foreground: 0 0% 98%;
     --primary-foreground: 240 5.9% 10%;
     --secondary-foreground: 0 0% 98%;
-    --muted-foreground: 240 5% 64.9%;
+    --muted-foreground: 322 15% 60%;
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
@@ -192,13 +169,28 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
-    --sidebar-background: 240 5.9% 10%;
+  }
+}
+
+@layer base {
+  :root {
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+  .dark {
+    --sidebar-background: 310 11% 22%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 240 3.7% 15.9%;
     --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-border: 47 25% 95%;
     --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }

@@ -2,9 +2,23 @@ import { Remarkable } from "remarkable";
 import StateSaver from "./state_saver";
 import { API_ADDRESS } from "./config";
 const path = require("node:path");
+import hljs from '@/lib/highlight/highlight.js'
 
 const md = new Remarkable("full", {
     html: true,
+    highlight: function (str, lang) {
+        if (lang && hljs.getLanguage(lang)) {
+            try {
+                return hljs.highlight(lang, str).value;
+            } catch (err) {}
+        }
+     
+        try {
+            return hljs.highlightAuto(str).value;
+        } catch (err) {}
+     
+        return '';
+    },
 });
 
 export default async function Page({params}) {
@@ -15,7 +29,7 @@ export default async function Page({params}) {
     return (
         <div className="markdown">
             <StateSaver/>
-            <div dangerouslySetInnerHTML={markup}></div>
+            <div className="max-w-[1200px] m-auto p-4" dangerouslySetInnerHTML={markup}></div>
         </div>
     );
 }

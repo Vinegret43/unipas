@@ -1,17 +1,24 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+    safelist: [
+	"hljs-keyword",
+	"hljs-built_in",
+	"hljs-number",
+	"hljs-comment",
+    ],
     darkMode: ["class"],
     content: [
     "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+
   theme: {
-	fontFamily: {
-		main: ['NotoSerif'],
-		title: ['Playfair'],
-		monospace: ['Iosevka'],
-	},
+  	fontFamily: {
+  		main: ['NotoSerif'],
+  		title: ['Playfair'],
+  		monospace: ['Iosevka']
+  	},
   	extend: {
   		colors: {
   			background: 'hsl(var(--background))',
