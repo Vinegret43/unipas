@@ -83,9 +83,8 @@
   }
 
   .markdown img {
-    @apply max-h-[500px];
-    @apply max-w-[100%];
-    @apply m-auto;
+    @apply max-w-[70%];
+    @apply m-auto rounded-xl;
   }
 
   .sidebar-menu-item * {
