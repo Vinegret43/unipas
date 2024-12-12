@@ -96,10 +96,6 @@
     @apply m-auto rounded-xl;
   }
 
-  .sidebar-menu-item * {
-    @apply leading-none;
-  }
-
   .dark .markdown img:not(.universal) {
     @apply invert;
     @apply hue-rotate-90;

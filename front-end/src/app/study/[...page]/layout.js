@@ -18,7 +18,7 @@ const path = require("node:path");
 function SidebarLink({href, active, children}) {
   return (<Link
     href={href}
-    className={'hover:text-primary ' + (active ? 'underline text-primary' : 'no-underline text-foreground')}
+    className={'leading-tight hover:text-primary ' + (active ? 'underline text-primary' : 'no-underline text-foreground')}
   >
     {children}
   </Link>)
@@ -42,7 +42,7 @@ function create_table_of_contents(contents, cur_url) {
           path.relative("page", contents[i].inner[k].path),
         );
         children.push(
-          <SidebarMenuSubItem className="sidebar-item" key={inner_article_path}>
+          <SidebarMenuSubItem className="mb-2" key={inner_article_path}>
               <SidebarLink href={inner_article_path} active={inner_article_path==cur_url}>
                 {contents[i].inner[k].name}
               </SidebarLink>
@@ -51,7 +51,7 @@ function create_table_of_contents(contents, cur_url) {
       };
 
       elements.push(
-        <SidebarMenuItem className="sidebar-item" key={article_path}>
+        <SidebarMenuItem className="mb-2" key={article_path}>
             {contents[i].name}
           <SidebarMenuSub>
             {children}
@@ -60,7 +60,7 @@ function create_table_of_contents(contents, cur_url) {
       );
     } else {
       elements.push(
-        <SidebarMenuItem className="sidebar-item" key={article_path}>
+        <SidebarMenuItem className="mb-2" key={article_path}>
             <SidebarLink href={article_path} active={article_path==cur_url}>
               {contents[i].name}
             </SidebarLink>
