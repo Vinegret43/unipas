@@ -42,7 +42,7 @@ function create_table_of_contents(contents, cur_url) {
           path.relative("page", contents[i].inner[k].path),
         );
         children.push(
-          <SidebarMenuSubItem className="sidebar-item">
+          <SidebarMenuSubItem className="sidebar-item" key={inner_article_path}>
               <SidebarLink href={inner_article_path} active={inner_article_path==cur_url}>
                 {contents[i].inner[k].name}
               </SidebarLink>
@@ -51,10 +51,8 @@ function create_table_of_contents(contents, cur_url) {
       };
 
       elements.push(
-        <SidebarMenuItem className="sidebar-item">
-            <SidebarLink href={article_path} active={article_path==cur_url}>
-              {contents[i].name}
-            </SidebarLink>
+        <SidebarMenuItem className="sidebar-item" key={article_path}>
+            {contents[i].name}
           <SidebarMenuSub>
             {children}
           </SidebarMenuSub>
@@ -62,7 +60,7 @@ function create_table_of_contents(contents, cur_url) {
       );
     } else {
       elements.push(
-        <SidebarMenuItem className="sidebar-item">
+        <SidebarMenuItem className="sidebar-item" key={article_path}>
             <SidebarLink href={article_path} active={article_path==cur_url}>
               {contents[i].name}
             </SidebarLink>
@@ -80,13 +78,13 @@ export default async function Layout({children, params}) {
     const posts = await result.json();
     const table_of_contents = create_table_of_contents(posts, cur_url);
     return (
-      <SidebarProvider>
+      <SidebarProvider className='w-screen'>
         <AppSidebar>
           {table_of_contents}
         </AppSidebar>
-        <main className="flex flex-col max-h-screen w-full">
+        <main className="flex-1 grow min-w-0 flex flex-col max-h-screen">
           <Nav><SidebarTrigger/></Nav>
-          <div className="overflow-auto">
+          <div className="overflow-auto w-full">
             {children}
           </div>
         </main>

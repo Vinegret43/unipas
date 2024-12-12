@@ -10,7 +10,9 @@ import {
 export default function AppSidebar({children}) {
   return (
     <Sidebar className="app-sidebar">
-      <SidebarHeader>UNIPAS</SidebarHeader>
+      <SidebarHeader className="p-4">
+        <img className="w-48" src="/icons/logo.svg"/>
+      </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
             <SidebarGroupContent>

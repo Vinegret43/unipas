@@ -27,9 +27,9 @@ export default async function Page({params}) {
     const page_content = await result.text();
     const markup = {__html: md.render(page_content)};
     return (
-        <div className="markdown">
+        <div className="markdown w-full">
             <StateSaver/>
-            <div className="max-w-[1200px] m-auto p-4" dangerouslySetInnerHTML={markup}></div>
+            <div className="m-auto md:max-w-[1200px] p-4" dangerouslySetInnerHTML={markup}></div>
         </div>
     );
 }
