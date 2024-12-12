@@ -24,9 +24,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#505050"
      inkscape:document-units="mm"
-     inkscape:zoom="1.4645623"
-     inkscape:cx="1124.2267"
-     inkscape:cy="-465.66815"
+     inkscape:zoom="1.0356019"
+     inkscape:cx="994.10785"
+     inkscape:cy="-472.18916"
      inkscape:window-width="1920"
      inkscape:window-height="1048"
      inkscape:window-x="0"
@@ -684,7 +684,11 @@
        x="278.22586"
        y="-155.75571"
        ry="11.946708" /><g
-       id="g14"><rect
+       id="g14"
+       inkscape:export-filename="/home/fedor/Desktop/g14.png"
+       inkscape:export-xdpi="47.13139"
+       inkscape:export-ydpi="47.13139"
+       transform="translate(-111.39254,1.5329249)"><rect
          style="fill:#7fc9c2;fill-opacity:1;stroke:none;stroke-width:0.719909;stroke-linecap:square;stroke-opacity:1;paint-order:stroke fill markers"
          id="rect35-8-2"
          width="59.706478"
