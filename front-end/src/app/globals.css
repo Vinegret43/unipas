@@ -96,6 +96,10 @@
     @apply m-auto rounded-xl;
   }
 
+  .markdown ol {
+    @apply list-decimal list-inside;
+  }
+
   .dark .markdown img:not(.universal) {
     @apply invert;
     @apply hue-rotate-90;

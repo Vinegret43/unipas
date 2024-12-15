@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export const metadata = {
   title: "Unipas",
-  description: "Ваш лучший помощник по программированию в МЭИ",
+  description: "Программирование не должно казаться магией",
 };
 
 export const viewport = {
