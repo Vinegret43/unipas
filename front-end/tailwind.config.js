@@ -15,8 +15,8 @@ module.exports = {
 
   theme: {
   	fontFamily: {
-  		main: ['NotoSerif'],
-  		title: ['Playfair'],
+  		main: ['Noto Serif'],
+  		title: ['Playfair Display'],
   		monospace: ['Iosevka']
   	},
   	extend: {

@@ -2,25 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+
 @layer base {
-  @font-face {
-    font-family: 'Playfair';
-    font-style: italic;
-    font-display: swap;
-    src: url("/fonts/PlayfairDisplay-VariableFont_wght.ttf");
-  }
-  @font-face {
-    font-family: 'NotoSerif';
-    font-style: normal;
-    font-display: swap;
-    src: url("/fonts/NotoSerif-VariableFont_wdth,wght.ttf");
-  }
-  @font-face {
-    font-family: 'NotoSerif';
-    font-style: italic;
-    font-display: swap;
-    src: url("/fonts/NotoSerif-Italic-VariableFont_wdth,wght.ttf");
-  }
   @font-face {
     font-family: 'Iosevka';
     font-style: normal;
