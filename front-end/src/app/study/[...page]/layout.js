@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { API_ADDRESS } from "./config";
+import { API_ADDRESS } from "@/config";
 import Nav from "@/components/custom/nav";
 import {
   SidebarProvider,
@@ -27,7 +27,6 @@ function SidebarLink({href, active, children}) {
 function create_table_of_contents(contents, cur_url) {
   let elements = [];
   cur_url = '/study/' + cur_url;
-  console.log(cur_url);
 
   for (let i = 0; i < contents.length; i++) {
     const article_path = path.join(
@@ -83,7 +82,9 @@ export default async function Layout({children, params}) {
           {table_of_contents}
         </AppSidebar>
         <main className="flex-1 grow min-w-0 flex flex-col max-h-screen">
-          <Nav><SidebarTrigger/></Nav>
+          <Nav>
+            <SidebarTrigger/>
+          </Nav>
           <div className="overflow-auto w-full">
             {children}
           </div>
