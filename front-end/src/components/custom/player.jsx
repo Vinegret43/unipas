@@ -1,16 +1,9 @@
 'use client'
 
-import { SERV_ADDRESS } from '@/config';
 import { Slider } from '@/components/ui/slider';
 import { Button } from '@/components/ui/button';
 
 import { useState, useEffect } from 'react';
-
-function make_player_appear() {
-  const container = document.getElementById('player_container');
-  const audio = document.getElementById('audio_tag');
-  container.hidden = false;
-}
 
 function pad(d) {
     return (d < 10) ? '0' + d.toString() : d.toString();
@@ -51,7 +44,6 @@ export default function Player({audio_path}) {
       const audio = document.getElementById('audio_tag');
       if (audio.duration) {
         const container = document.getElementById('player_container');
-        container.hidden = false;
         setPlaying(!audio.paused);
         setTime(audio.currentTime);
         setDuration(audio.duration);
@@ -63,7 +55,7 @@ export default function Player({audio_path}) {
   });
 
   return (
-    <div hidden className="border-foreground border-2 rounded-2xl p-2" id='player_container'>
+    <div className="border-foreground border-2 rounded-2xl p-2" id='player_container'>
       <div className='pl-2'>
         Аудиостатья
       </div>
@@ -89,7 +81,7 @@ export default function Player({audio_path}) {
         <span className='font-monospace pt-1 md:pt-0'>
           -{Math.floor((duration-time)/60)}:{pad(Math.ceil((duration-time)%60))}
         </span>
-        <audio id='audio_tag' onCanPlay={make_player_appear}>
+        <audio id='audio_tag'>
           <source src={audio_path} type="audio/mp3"/>
         </audio>
       </div>
